@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./AdminNavbar.css";
 import logo from "../../assets/Seema Fish Logo.svg";
-import admin from "../../assets/account.svg";
+import admin from "../../assets/admin_acc.svg";
 
 const AdminNavbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);

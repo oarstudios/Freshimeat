@@ -39,46 +39,51 @@ const AddNewAddressModal = ({ onClose, onSave, availableTypes }) => {
         <h2>Add New Address</h2>
 
         {/* Address Type Selection */}
-        <div className="address-type">
-          <button
-            className={`home-button ${newAddress.addressType === "home1" ? "active" : "inactive"}`}
-            onClick={() => setNewAddress({ ...newAddress, addressType: "home1" })}
-            disabled={!availableTypes.includes("home1")}
-          >
-            <img 
-              src={newAddress.addressType === "home1" ? homeActiveIcon : homeInactiveIcon} 
-              alt="Home Icon" 
-              className="home-icon" 
-            />
-            HOME 1
-          </button>
+        {/* Address Type Selection */}
+<div className="address-type">
+  {availableTypes.includes("home1") && (
+    <button
+      className={`home-button ${newAddress.addressType === "home1" ? "active" : "inactive"}`}
+      onClick={() => setNewAddress({ ...newAddress, addressType: "home1" })}
+    >
+      <img 
+        src={newAddress.addressType === "home1" ? homeActiveIcon : homeInactiveIcon} 
+        alt="Home Icon" 
+        className="home-icon" 
+      />
+      HOME 1
+    </button>
+  )}
 
-          <button
-            className={`home-button ${newAddress.addressType === "home2" ? "active" : "inactive"}`}
-            onClick={() => setNewAddress({ ...newAddress, addressType: "home2" })}
-            disabled={!availableTypes.includes("home2")}
-          >
-            <img 
-              src={newAddress.addressType === "home2" ? homeActiveIcon : homeInactiveIcon} 
-              alt="Home Icon" 
-              className="home-icon" 
-            />
-            HOME 2
-          </button>
+  {availableTypes.includes("home2") && (
+    <button
+      className={`home-button ${newAddress.addressType === "home2" ? "active" : "inactive"}`}
+      onClick={() => setNewAddress({ ...newAddress, addressType: "home2" })}
+    >
+      <img 
+        src={newAddress.addressType === "home2" ? homeActiveIcon : homeInactiveIcon} 
+        alt="Home Icon" 
+        className="home-icon" 
+      />
+      HOME 2
+    </button>
+  )}
 
-          <button
-            className={`home-button ${newAddress.addressType === "office" ? "active" : "inactive"}`}
-            onClick={() => setNewAddress({ ...newAddress, addressType: "office" })}
-            disabled={!availableTypes.includes("office")}
-          >
-            <img 
-              src={newAddress.addressType === "office" ? officeActiveIcon : officeInactiveIcon} 
-              alt="Office Icon" 
-              className="home-icon" 
-            />
-            OFFICE
-          </button>
-        </div>
+  {availableTypes.includes("office") && (
+    <button
+      className={`home-button ${newAddress.addressType === "office" ? "active" : "inactive"}`}
+      onClick={() => setNewAddress({ ...newAddress, addressType: "office" })}
+    >
+      <img 
+        src={newAddress.addressType === "office" ? officeActiveIcon : officeInactiveIcon} 
+        alt="Office Icon" 
+        className="home-icon" 
+      />
+      OFFICE
+    </button>
+  )}
+</div>
+
 
         {/* Address Form */}
         <div className="input-group">

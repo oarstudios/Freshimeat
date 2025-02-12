@@ -41,7 +41,7 @@ const reviews = [
   },
   {
     id: 5,
-    name: 'Whole Cleaned (with head) Black Pomfret Fish/ Halwa Fish',
+    name: 'Omkar Garate',
     rating: 3,
     title: '',
     review: 'The cake was good, but it was a bit too sweet for my taste. The texture, however, was perfect!',
@@ -49,7 +49,7 @@ const reviews = [
   },
   {
     id: 6,
-    name: 'Whole Cleaned (with head) Black Pomfret Fish/ Halwa Fish',
+    name: 'Omkar Garate',
     rating: 5,
     title: 'Amazi',
     review: 'One of the best cheesecakes I’ve had in years! Highly recommend it to anyone who loves desserts.',
@@ -119,8 +119,9 @@ const CustomerReviews = () => {
             <div className="review-author">
               <img src={UserIcon} alt="User Icon" className="user-icon" />
               <h4>{review.name}</h4>
-              <div className="stars">{renderStars(review.rating)}</div>
+              
             </div>
+            <div className="stars">{renderStars(review.rating)}</div>
           </div>
           <h3>{review.title}</h3>
           <p>{review.review}</p>

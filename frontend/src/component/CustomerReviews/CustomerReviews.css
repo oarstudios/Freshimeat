@@ -36,15 +36,15 @@ color: rgba(19, 19, 19, 1);
 
   
   .review-header {
-    display: flex;
+    /* display: flex; */
     align-items: center;
     margin-bottom: 10px;
   }
   
   .review-author {
-    margin-top: 2rem;
+    margin: 2rem 0rem 0.6rem 0rem;
     display: flex;
-    /* align-items: center; */
+    align-items: center;
     gap: 10px;
   }
   

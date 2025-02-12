@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./CartPopup.css";
 import sampleImage from "../../assets/fishimage.png"; // Sample product image
-import closeIcon from "../../assets/close.png"; // Close icon for popup
+import closeIcon from "../../assets/cross.svg"; // Close icon for popup
 import { Link } from "react-router-dom";
 
 const initialCart = [
