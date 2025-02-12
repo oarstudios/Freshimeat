@@ -1,0 +1,32 @@
+.about-us {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 4rem;
+    flex-wrap: wrap; /* Allow elements to wrap on smaller screens */
+  }
+  
+  .about-us-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* Optional: to add rounded corners */
+
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    .about-us {
+      padding: 1rem; /* Adjust padding for smaller screens */
+    }
+  
+    .about-us-img {
+      width: 100%; /* Reduce width to allow for more space around image */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .about-us-img {
+      width: 100%; /* Ensure image occupies full width on mobile devices */
+    }
+  }
+  

@@ -1,0 +1,71 @@
+import React, { useEffect, useState } from "react";
+import "./AdminDashboard.css";
+
+const AnimatedNumber = ({ value }) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const end = parseInt(value.replace(/,/g, ""));
+    if (count === end) return;
+
+    let duration = 3000;
+    let step = Math.ceil(end / (duration / 20));
+    let startTime = Date.now();
+
+    let timer = setInterval(() => {
+      let elapsedTime = Date.now() - startTime;
+      let progress = Math.min(elapsedTime / duration, 1);
+      let newValue = Math.floor(progress * end);
+      setCount(newValue);
+      
+      if (progress >= 1) {
+        clearInterval(timer);
+      }
+    }, 20);
+
+    return () => clearInterval(timer);
+  }, [value]);
+
+  return <h2>{count.toLocaleString()}</h2>;
+};
+
+const AdminDashboard = () => {
+  return (
+    <div className="admin-dashboard">
+      <div className="dashboard-row">
+        <div className="dashboard-card full-width">
+          <AnimatedNumber value="1000000" />
+          <p>REVENUE</p>
+        </div>
+        <div className="dashboard-card full-width">
+          <AnimatedNumber value="1291" />
+          <p>CUSTOMERS</p>
+        </div>
+        <div className="dashboard-card full-width">
+          <h2>WEBSITE</h2>
+          <p>CMS</p>
+        </div>
+      </div>
+      <div className="dashboard-row">
+        <div className="dashboard-card half-width">
+          <AnimatedNumber value="10973" />
+          <p>ORDERS</p>
+        </div>
+        <div className="dashboard-card half-width">
+          <AnimatedNumber value="21" />
+          <p>LOCATIONS</p>
+        </div>
+        <div className="dashboard-card half-width">
+          <AnimatedNumber value="52" />
+          <p>PRODUCTS</p>
+        </div>
+        <div className="dashboard-card half-width">
+          <h2>QUICK</h2>
+          <p>PRICING</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AdminDashboard;
