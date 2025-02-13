@@ -17,7 +17,7 @@ const AnimatedNumber = ({ value }) => {
       let progress = Math.min(elapsedTime / duration, 1);
       let newValue = Math.floor(progress * end);
       setCount(newValue);
-      
+
       if (progress >= 1) {
         clearInterval(timer);
       }
@@ -33,36 +33,50 @@ const AdminDashboard = () => {
   return (
     <div className="admin-dashboard">
       <div className="dashboard-row">
-        <div className="dashboard-card full-width">
-          <AnimatedNumber value="1000000" />
-          <p>REVENUE</p>
-        </div>
-        <div className="dashboard-card full-width">
-          <AnimatedNumber value="1291" />
-          <p>CUSTOMERS</p>
-        </div>
-        <div className="dashboard-card full-width">
-          <h2>WEBSITE</h2>
-          <p>CMS</p>
-        </div>
+        <a href="/admin" className="dashboard-link">
+          <div className="dashboard-card full-width">
+            <AnimatedNumber value="1000000" />
+            <p>REVENUE</p>
+          </div>
+        </a>
+        <a href="/admin/customers" className="dashboard-link">
+          <div className="dashboard-card full-width">
+            <AnimatedNumber value="1291" />
+            <p>CUSTOMERS</p>
+          </div>
+        </a>
+        <a href="/admin/creatives" className="dashboard-link">
+          <div className="dashboard-card full-width">
+            <h2>WEBSITE</h2>
+            <p>CMS</p>
+          </div>
+        </a>
       </div>
       <div className="dashboard-row">
-        <div className="dashboard-card half-width">
-          <AnimatedNumber value="10973" />
-          <p>ORDERS</p>
-        </div>
-        <div className="dashboard-card half-width">
-          <AnimatedNumber value="21" />
-          <p>LOCATIONS</p>
-        </div>
-        <div className="dashboard-card half-width">
-          <AnimatedNumber value="52" />
-          <p>PRODUCTS</p>
-        </div>
-        <div className="dashboard-card half-width">
-          <h2>QUICK</h2>
-          <p>PRICING</p>
-        </div>
+        <a href="/admin/customer-orders" className="dashboard-link">
+          <div className="dashboard-card half-width">
+            <AnimatedNumber value="10973" />
+            <p>ORDERS</p>
+          </div>
+        </a>
+        <a href="/admin/delivery-pricing" className="dashboard-link">
+          <div className="dashboard-card half-width">
+            <AnimatedNumber value="21" />
+            <p>LOCATIONS</p>
+          </div>
+        </a>
+        <a href="/admin/products" className="dashboard-link">
+          <div className="dashboard-card half-width">
+            <AnimatedNumber value="52" />
+            <p>PRODUCTS</p>
+          </div>
+        </a>
+        <a href="/admin/quick-pricing" className="dashboard-link">
+          <div className="dashboard-card half-width">
+            <h2>QUICK</h2>
+            <p>PRICING</p>
+          </div>
+        </a>
       </div>
     </div>
   );

@@ -136,7 +136,7 @@ color: rgba(96, 96, 96, 1);
   .product-outofstock {
     font-family: "Lato";
 font-weight: 700;
-font-size: 24px;
+font-size: 20px;
 color: rgb(168, 21, 10, 1);
 
 
@@ -252,13 +252,16 @@ color: rgb(168, 21, 10, 1);
         height: 200px;
     }
     .section-title{
-      font-size: 24px;
+      font-size: 20px;
     }
     .product-warning{
-      font-size: 18px;
+      font-size: 16px;
     }
     .product-description, .product-description li {
-      font-size: 18px;
+      font-size: 16px;
+    }
+    .product-outofstock{
+      font-size: 16px;
     }
   }
   

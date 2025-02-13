@@ -1,13 +1,28 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import "./OrderSummary.css";
+import { useNavigate } from "react-router-dom";
+import PaymentMethod from "./PaymentMethod";
 import DeliveryTimeModal from "./DeliveryTimeModal"; // Import Delivery Popup
 import clockIcon from "../../assets/time.png"; // Import Clock Icon
 import homeIcon from "../../assets/home (1).png";
 
 const OrderSummary = ({ address, orderItems, onBack }) => {
+  const navigate = useNavigate();
   const [showDeliveryPopup, setShowDeliveryPopup] = useState(false);
   const [selectedSlot, setSelectedSlot] = useState("Today 90 mins"); // Default delivery slot
+  const [selectedPayment, setSelectedPayment] = useState("paynow"); // Payment Selection
+
+  const handleProceedToPayment = () => {
+    if (selectedPayment) {
+      console.log("Selected Payment Method:", selectedPayment);
+      localStorage.setItem("selectedDeliverySlot", selectedSlot);
+      localStorage.setItem("selectedPaymentMethod", selectedPayment);
+      navigate("/order");
+      // Navigate to payment processing page or trigger payment gateway here
+    } else {
+      alert("Please select a payment method before proceeding.");
+    }
+  };
 
   return (
     <div className="order-summary-container">
@@ -61,13 +76,13 @@ const OrderSummary = ({ address, orderItems, onBack }) => {
         <h3 className="user-price-total-value">₹{orderItems.reduce((total, product) => total + product.price * product.quantity, 110)}</h3>
       </div>
 
-      {/* Proceed Button */}
-      <Link to="/myaccount" style={{ textDecoration: "none" }} onClick={() => {
-  localStorage.setItem("selectedDeliverySlot", selectedSlot);
-}}>
-  <button className="select-address">Proceed to Payment</button>
-</Link>
+      {/* Payment Method Selection */}
+      <PaymentMethod selectedPayment={selectedPayment} setSelectedPayment={setSelectedPayment} />
 
+      {/* Proceed Button */}
+      <button className="select-address" onClick={handleProceedToPayment}>
+        Proceed to Payment
+      </button>
 
       {showDeliveryPopup && <DeliveryTimeModal onClose={() => setShowDeliveryPopup(false)} onSelectSlot={setSelectedSlot} />}
     </div>

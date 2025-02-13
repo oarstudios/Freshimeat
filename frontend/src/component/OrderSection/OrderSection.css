@@ -218,8 +218,8 @@ font-size: 24px;
     padding: 2rem;
   }
   .image-preview {
-    width: 90px;
-    height: 90px;
+    width: 120px;
+    height: 120px;
     border: 1px solid rgba(142, 142, 142, 1);
     border-radius: 8px;
     overflow: hidden;
@@ -314,8 +314,8 @@ font-size: 24px;
     }
   
     .image-preview {
-      width: 60px;
-      height: 60px;
+      width: 100px;
+      height: 100px;
     }
   
     .submit-btn {
@@ -342,4 +342,24 @@ font-size: 24px;
   }
   
 
- 
+  .image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    cursor: zoom-out;
+  }
+  
+  .expanded-image {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  }
+  

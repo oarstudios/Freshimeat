@@ -11,6 +11,9 @@ const OrderSection = () => {
   const [inputs, setInputs] = useState({});
   const [submittedReviews, setSubmittedReviews] = useState({});
    const [selectedDeliveryDate, setSelectedDeliveryDate] = useState("");
+   const [isModalOpen, setIsModalOpen] = useState(false);
+const [selectedImage, setSelectedImage] = useState(null);
+
 
   // Static Order & Product Data
   const order = {
@@ -108,6 +111,18 @@ const OrderSection = () => {
       const savedSlot = localStorage.getItem("selectedDeliverySlot");
       setSelectedDeliveryDate(savedSlot);
     }, []);
+
+    const handleImageClick = (imageUrl) => {
+      setSelectedImage(imageUrl);
+      setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+      setIsModalOpen(false);
+      setSelectedImage(null);
+    };
+    
+
   return (
     <div className="order-section">
       <div className="order-left">
@@ -151,13 +166,25 @@ const OrderSection = () => {
              onChange={(e) => handleTextChange(e, item.id)}
            />
            <div className="image-preview-grid">
-             {(inputs[item.id]?.media || []).map((media, index) => (
-               <div key={index} className="image-preview">
-                 <img src={media.preview} alt="Uploaded" className="uploaded-preview" />
-                 <button className="remove-image-btn" onClick={() => handleRemoveImage(item.id, index)}>❌</button>
-               </div>
-             ))}
-           </div>
+  {(inputs[item.id]?.media || []).map((media, index) => (
+    <div key={index} className="image-preview">
+      <img
+        src={media.preview}
+        alt="Uploaded"
+        className="uploaded-preview"
+        onClick={() => handleImageClick(media.preview)}
+        style={{ cursor: "pointer" }}
+      />
+      <button
+        className="delete-image-button"
+        onClick={() => handleRemoveImage(item.id, index)}
+      >
+        ×
+      </button>
+    </div>
+  ))}
+</div>
+
            <label htmlFor={`upload-${item.id}`} className="upload-icon">
              <img src={UploadIcon} alt="Upload Icon" />
            </label>
@@ -182,6 +209,12 @@ const OrderSection = () => {
         <div className="user-order-details">
           <h3 className="order-details-title">Order Details:</h3>
           {orderItems.map((product, index) => (
+           <Link 
+           to="/product" 
+           key={index} 
+           className="user-order-item-link" 
+           style={{ textDecoration: 'none', color: 'inherit' }}  // Inline styles
+         >
             <div key={index} className="user-order-item">
               <img src={product.image} alt="Product" className="user-order-img" />
               <div className="user-order-info">
@@ -193,6 +226,7 @@ const OrderSection = () => {
                 </div>
               </div>
             </div>
+            </Link>
           ))}
         </div>
 
@@ -215,6 +249,12 @@ const OrderSection = () => {
 
        
       </div>
+      {isModalOpen && (
+  <div className="image-modal" onClick={closeModal}>
+    <img src={selectedImage} alt="Expanded" className="expanded-image" />
+  </div>
+)}
+
     </div>
   );
 };

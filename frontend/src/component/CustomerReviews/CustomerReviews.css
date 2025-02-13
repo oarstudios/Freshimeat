@@ -62,7 +62,7 @@ color: rgba(19, 19, 19, 1);
   
   .review-card h3 {
     font-family: "Lato";
-font-size: 32px;
+font-size: 24px;
 font-weight: 600;
 color: rgba(19, 19, 19, 1);
 text-align: left;
@@ -158,7 +158,7 @@ margin-bottom: 1rem;
   }
 
   .customer-reviews h2 {
-    font-size: 28px; /* Smaller font for the title */
+    font-size: 24px; /* Smaller font for the title */
   }
 
   .rating-summary p {
